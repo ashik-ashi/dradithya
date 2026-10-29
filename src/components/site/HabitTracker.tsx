@@ -26,7 +26,7 @@ function HabitCheck({
       data-state={checked ? "checked" : "unchecked"}
       onClick={onToggle}
       className={cn(
-        "grid size-11 place-items-center rounded-xl border-2 transition-[background-color,border-color,box-shadow] duration-300 ease-out",
+        "grid size-11 place-items-center rounded-[0.65rem] border-2 transition-[background-color,border-color,box-shadow] duration-300 ease-out",
         checked
           ? "border-forest bg-forest text-forest-foreground shadow-soft"
           : "border-input bg-paper text-transparent hover:border-sage hover:bg-sage-mist",

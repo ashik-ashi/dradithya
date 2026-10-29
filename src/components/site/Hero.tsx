@@ -13,7 +13,7 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="paper-grain relative overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-24"
     >
-      <LeafSprig className="pointer-events-none absolute -top-6 -left-10 w-40 -scale-x-100 rotate-180 text-sage/50 sm:w-56" />
+      <LeafSprig className="pointer-events-none absolute -bottom-10 -left-12 w-40 text-sage/40 sm:w-56" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8">
         <div className="min-w-0">

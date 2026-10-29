@@ -32,8 +32,8 @@ export function Contact() {
           subtitle="Reach out on WhatsApp, phone, email or Instagram."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <ul className="grid gap-4 sm:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <ul className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
             {ITEMS.map(({ icon: Icon, label, value, href }, i) => {
               const body = (
                 <>
@@ -42,7 +42,7 @@ export function Contact() {
                   </span>
                   <span className="min-w-0">
                     <span className="eyebrow block text-[0.64rem]">{label}</span>
-                    <span className="mt-1 block text-[0.98rem] font-medium break-words text-forest-deep">
+                    <span className="mt-1 block text-[0.98rem] font-medium [overflow-wrap:anywhere] text-forest-deep">
                       {value}
                     </span>
                   </span>

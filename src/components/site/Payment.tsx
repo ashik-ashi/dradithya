@@ -24,7 +24,7 @@ export function Payment() {
           subtitle="Pay for your chosen service via UPI and share the confirmation on WhatsApp."
         />
 
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+        <div className="mt-14 grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal from="left" className="min-w-0 space-y-8">
             <div className="card-premium p-6 sm:p-8">
               <h3 className="text-xl font-semibold">Services &amp; Prices</h3>
@@ -60,7 +60,7 @@ export function Payment() {
             </LinkButton>
           </Reveal>
 
-          <Reveal from="scale" delay={120} className="mx-auto w-full max-w-sm">
+          <Reveal from="scale" delay={120} className="mx-auto w-full max-w-[26rem]">
             <figure className="rounded-[1.75rem] border border-border bg-paper p-4 shadow-lift sm:p-5">
               {/* QR shown exactly as provided: no crop, filter, overlay or stretching. */}
               <div className="rounded-2xl bg-qr-surface p-3">
