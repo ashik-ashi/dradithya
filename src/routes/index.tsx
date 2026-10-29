@@ -1,24 +1,60 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { About } from "@/components/site/About";
+import { ConsultationCta } from "@/components/site/ConsultationCta";
+import { Contact } from "@/components/site/Contact";
+import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import { Footer } from "@/components/site/Footer";
+import { HabitTracker } from "@/components/site/HabitTracker";
+import { Hero } from "@/components/site/Hero";
+import { Navbar } from "@/components/site/Navbar";
+import { Payment } from "@/components/site/Payment";
+import { Services } from "@/components/site/Services";
+import { WellnessGuide } from "@/components/site/WellnessGuide";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Dr. Adithya | Health & Wellness Consultation";
+const DESCRIPTION =
+  "Dr. Adithya, BNYS Intern, provides health education and lifestyle guidance with a focus on practical wellness habits in Kannada and English.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-full bg-forest px-5 py-3 text-forest-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main">
+        <Hero />
+        <About />
+        <Services />
+        <ConsultationCta />
+        <WellnessGuide />
+        <HabitTracker />
+        <Payment />
+        <Contact />
+      </main>
+      <Footer />
+      <FloatingWhatsApp />
+    </>
   );
 }
