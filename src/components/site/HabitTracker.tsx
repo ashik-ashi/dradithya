@@ -151,7 +151,7 @@ export function HabitTracker() {
                       <td key={w} className="px-3 py-3">
                         <div className="flex justify-center">
                           <HabitCheck
-                            checked={grid[h][wi]}
+                            checked={grid[h]?.[wi] ?? false}
                             label={`${habit} – ${w}`}
                             onToggle={() => toggle(h, wi)}
                           />
@@ -173,7 +173,7 @@ export function HabitTracker() {
                   {WEEKS.map((w, wi) => (
                     <div key={w} className="flex flex-col items-center gap-1.5">
                       <HabitCheck
-                        checked={grid[h][wi]}
+                        checked={grid[h]?.[wi] ?? false}
                         label={`${habit} – ${w}`}
                         onToggle={() => toggle(h, wi)}
                       />

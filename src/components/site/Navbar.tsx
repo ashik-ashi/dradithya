@@ -28,15 +28,15 @@ export function Navbar() {
     };
   }, [open]);
 
-  const solid = scrolled || open;
-
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ease-in-out",
-        solid
-          ? "border-b border-border/70 bg-background/95 shadow-soft backdrop-blur-sm"
-          : "border-b border-transparent bg-transparent",
+        open
+          ? "border-b border-border/70 bg-background shadow-lift"
+          : scrolled
+            ? "border-b border-border/70 bg-background/95 shadow-soft backdrop-blur-sm"
+            : "border-b border-transparent bg-transparent",
       )}
     >
       <nav
