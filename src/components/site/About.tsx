@@ -30,7 +30,7 @@ export function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="bg-paper py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <Reveal from="left" className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div className="group overflow-hidden rounded-[2rem] rounded-tl-[6rem] bg-plate shadow-lift ring-1 ring-forest/10">
               <img
@@ -75,7 +75,7 @@ export function About() {
           </Reveal>
         </div>
 
-        <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+        <ul className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
           {FEATURES.map(({ icon: Icon, title, text }, i) => (
             <Reveal as="li" key={title} delay={i * 110} className="group card-premium card-hover p-6">
               <span className="icon-badge size-12 group-hover:-translate-y-1">

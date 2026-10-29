@@ -15,7 +15,7 @@ export function Hero() {
     >
       <LeafSprig className="pointer-events-none absolute -bottom-10 -left-12 w-40 text-sage/40 sm:w-56" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8">
         <div className="min-w-0">
           <p className="eyebrow animate-fade" style={delay(80)}>
             BNYS Intern <span className="text-sage">|</span> Health &amp; Wellness

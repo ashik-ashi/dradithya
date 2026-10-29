@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="forest-band">
       <Reveal className="mx-auto max-w-7xl px-4 pt-16 pb-28 sm:px-6 sm:pb-12 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
           <div className="min-w-0">
             <a href="#home" className="inline-block overflow-hidden rounded-2xl bg-plate ring-1 ring-gold/40">
               <img

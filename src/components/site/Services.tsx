@@ -26,7 +26,7 @@ export function Services() {
           subtitle="Personalised guidance and practical programs to help you build better everyday habits."
         />
 
-        <ul className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <ul className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           {SERVICES.map((s, i) => {
             const Icon = ICONS[s.id as keyof typeof ICONS];
             return (
