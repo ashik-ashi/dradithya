@@ -19,8 +19,8 @@ export function Payment() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="payment-title"
-          eyebrow="Payment"
-          title="Simple & Secure Payment"
+          eyebrow="UPI Payment"
+          title="Payment Details"
           subtitle="Pay for your chosen service via UPI and share the confirmation on WhatsApp."
         />
 
@@ -63,7 +63,7 @@ export function Payment() {
           <Reveal from="scale" delay={120} className="mx-auto w-full max-w-sm">
             <figure className="rounded-[1.75rem] border border-border bg-paper p-4 shadow-lift sm:p-5">
               {/* QR shown exactly as provided: no crop, filter, overlay or stretching. */}
-              <div className="rounded-2xl bg-white p-3">
+              <div className="rounded-2xl bg-qr-surface p-3">
                 <img
                   src={qr.url}
                   alt="Payment QR code for Dr. Adithya consultation services"
