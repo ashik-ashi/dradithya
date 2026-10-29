@@ -38,14 +38,16 @@ export function LeafSprig({ className, ...props }: SVGProps<SVGSVGElement>) {
         strokeWidth="2"
         strokeLinecap="round"
       />
-      {[
+      {(
+        [
         [55, 152, -118],
         [78, 127, -8],
         [100, 105, -122],
         [122, 82, -12],
         [142, 60, -125],
         [162, 40, -20],
-      ].map(([x, y, r], i) => (
+        ] as const
+      ).map(([x, y, r], i) => (
         <path
           key={i}
           d="M0 0 C 10 -18, 34 -22, 46 -10 C 34 2, 12 6, 0 0 Z"

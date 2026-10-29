@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type RevealProps = {
   children: ReactNode;
   as?: ElementType;
-  className?: string;
+  className?: string | undefined;
   delay?: number;
   /** Starting offset: "up" (default), "left", "right", or "scale". */
   from?: "up" | "left" | "right" | "scale";
