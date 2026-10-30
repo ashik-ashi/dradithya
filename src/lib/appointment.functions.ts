@@ -6,7 +6,7 @@ import {
   formatPreferredDate,
   patientConfirmationText,
 } from "@/lib/appointment";
-import { CONTACT, SITE_URL } from "@/lib/site";
+import { CONTACT } from "@/lib/site";
 
 const payloadSchema = z.object({
   fields: z.record(z.unknown()),
@@ -49,6 +49,8 @@ export const requestAppointment = createServerFn({ method: "POST" })
     const a = parsed.data;
 
     const { getRequestHeader } = await import("@tanstack/react-start/server");
+    const requestOrigin = getRequestHeader("origin");
+    const requestReferer = getRequestHeader("referer");
     const ip =
       getRequestHeader("cf-connecting-ip") ??
       getRequestHeader("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -85,8 +87,8 @@ export const requestAppointment = createServerFn({ method: "POST" })
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Origin: SITE_URL,
-          Referer: `${SITE_URL}/`,
+          ...(requestOrigin ? { Origin: requestOrigin } : {}),
+          ...(requestReferer ? { Referer: requestReferer } : {}),
         },
         body: JSON.stringify(body),
       });
