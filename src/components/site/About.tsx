@@ -43,7 +43,7 @@ export function About() {
               <span className="gold-rule w-24" />
             </div>
             <span className="mt-6 inline-flex items-center rounded-full border border-forest/20 bg-sage-mist px-4 py-1.5 text-sm font-semibold text-forest">
-              BNYS 
+              BNYS Intern
             </span>
             <div className="mt-6 space-y-4 text-[1.02rem] leading-relaxed text-muted-foreground">
               <p className="font-display text-2xl text-forest">Hello, I'm Dr Adithya.</p>
