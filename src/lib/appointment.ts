@@ -102,11 +102,19 @@ export function appointmentSchema(today: string = todayInIndia()) {
 
 export type AppointmentInput = z.input<ReturnType<typeof appointmentSchema>>;
 export type Appointment = z.output<ReturnType<typeof appointmentSchema>>;
-export type AppointmentField = keyof AppointmentInput;
+export type AppointmentField = 
+  | "name"
+  | "phone"
+  | "gender"
+  | "age"
+  | "email"
+  | "date"
+  | "consultation"
+  | "problem";
 
 /** Human-readable date, e.g. "Mon, 2 Nov 2026". */
 export function formatPreferredDate(iso: string): string {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y = 1970, m = 1, d = 1] = iso.split("-").map(Number);
   return new Intl.DateTimeFormat("en-IN", {
     weekday: "short",
     day: "numeric",

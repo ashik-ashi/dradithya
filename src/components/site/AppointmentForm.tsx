@@ -370,7 +370,7 @@ export function AppointmentForm() {
   );
 }
 
-function describe(field: AppointmentField, error?: string) {
+function describe(field: AppointmentField, error?: string | undefined) {
   return {
     "aria-invalid": error ? true : undefined,
     "aria-describedby": error ? `appt-${field}-error` : undefined,
@@ -387,7 +387,7 @@ function Field({
 }: {
   id: AppointmentField;
   label: string;
-  error?: string;
+  error?: string | undefined;
   className?: string;
   children: ReactNode;
 }) {

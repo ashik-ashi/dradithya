@@ -73,7 +73,7 @@ describe("Messages", () => {
   it("WhatsApp link goes to Dr. Adithya with the details pre-filled", () => {
     const url = whatsappDetailsUrl(a);
     expect(url.startsWith("https://wa.me/916362966465?text=")).toBe(true);
-    const text = decodeURIComponent(url.split("?text=")[1]);
+    const text = decodeURIComponent(url.split("?text=")[1] ?? "");
     expect(text).toContain("Name: Ravi Kumar");
     expect(text).toContain("Consultation: Personal Consultation");
   });
