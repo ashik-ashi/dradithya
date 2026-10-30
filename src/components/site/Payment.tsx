@@ -1,5 +1,4 @@
 import { Download, ShieldCheck } from "lucide-react";
-import qr from "@/assets/payment-qr.jpg.asset.json";
 import { CONTACT, SERVICES, formatINR } from "@/lib/site";
 import { LinkButton } from "./LinkButton";
 import { Reveal } from "./Reveal";
@@ -65,7 +64,7 @@ export function Payment() {
               {/* QR shown exactly as provided: no crop, filter, overlay or stretching. */}
               <div className="rounded-2xl bg-qr-surface p-3">
                 <img
-                  src={qr.url}
+                  src="/dr-adithya-payment-qr (1).jpg"
                   alt="Payment QR code for Dr. Adithya consultation services"
                   width={744}
                   height={1280}
@@ -80,7 +79,7 @@ export function Payment() {
               </figcaption>
             </figure>
             <a
-              href={qr.url}
+              href="/dr-adithya-payment-qr (1).jpg"
               download="dr-adithya-payment-qr.jpg"
               target="_blank"
               rel="noopener noreferrer"
