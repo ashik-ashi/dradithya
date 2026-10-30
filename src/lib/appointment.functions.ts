@@ -90,7 +90,10 @@ export const requestAppointment = createServerFn({ method: "POST" })
         },
         body: JSON.stringify(body),
       });
-      const json = (await res.json().catch(() => null)) as { success?: string | boolean; message?: string } | null;
+      const json = (await res.json().catch(() => null)) as {
+        success?: string | boolean;
+        message?: string;
+      } | null;
       const ok = res.ok && (json?.success === true || json?.success === "true");
       if (!ok) {
         console.error("Appointment relay rejected", res.status, json?.message);

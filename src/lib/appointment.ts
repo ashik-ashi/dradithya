@@ -62,7 +62,10 @@ export function appointmentSchema(today: string = todayInIndia()) {
     age: z.preprocess(
       (v) => (typeof v === "string" && v.trim() === "" ? undefined : v),
       z.coerce
-        .number({ required_error: "Please enter your age.", invalid_type_error: "Please enter your age." })
+        .number({
+          required_error: "Please enter your age.",
+          invalid_type_error: "Please enter your age.",
+        })
         .int("Please enter your age in whole years.")
         .min(AGE_MIN, `Age must be between ${AGE_MIN} and ${AGE_MAX}.`)
         .max(AGE_MAX, `Age must be between ${AGE_MIN} and ${AGE_MAX}.`),
@@ -102,15 +105,8 @@ export function appointmentSchema(today: string = todayInIndia()) {
 
 export type AppointmentInput = z.input<ReturnType<typeof appointmentSchema>>;
 export type Appointment = z.output<ReturnType<typeof appointmentSchema>>;
-export type AppointmentField = 
-  | "name"
-  | "phone"
-  | "gender"
-  | "age"
-  | "email"
-  | "date"
-  | "consultation"
-  | "problem";
+export type AppointmentField =
+  "name" | "phone" | "gender" | "age" | "email" | "date" | "consultation" | "problem";
 
 /** Human-readable date, e.g. "Mon, 2 Nov 2026". */
 export function formatPreferredDate(iso: string): string {

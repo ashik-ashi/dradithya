@@ -54,14 +54,19 @@ export function Services() {
                     {s.duration}
                   </p>
                 )}
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.description}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {s.description}
+                </p>
 
                 {s.list && (
                   <div className="mt-5">
                     <p className="eyebrow text-[0.65rem] text-forest">{s.listLabel}</p>
                     <ul className="mt-3 space-y-2">
                       {s.list.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                        <li
+                          key={item}
+                          className="flex items-start gap-2.5 text-sm text-foreground/85"
+                        >
                           <Check className="mt-0.5 size-4 shrink-0 text-sage" aria-hidden="true" />
                           {item}
                         </li>

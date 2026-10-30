@@ -142,8 +142,8 @@ export function AppointmentForm() {
               <p className="eyebrow mt-6">Appointment request sent successfully!</p>
               <h3 className="mt-3 text-2xl font-semibold sm:text-3xl">Appointment Request Sent</h3>
               <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">
-                Thank you, {sent.name}. Your consultation request has been received. Dr. Adithya will
-                review it and contact you regarding the appointment.
+                Thank you, {sent.name}. Your consultation request has been received. Dr. Adithya
+                will review it and contact you regarding the appointment.
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
                 <LinkButton href={whatsappDetailsUrl(sent)} variant="whatsapp">
@@ -187,7 +187,12 @@ export function AppointmentForm() {
                         ? "Too many requests were sent from this connection. Please wait a few minutes, or contact Dr. Adithya directly on WhatsApp."
                         : "Unable to send your appointment request right now. Please try again or contact us directly on WhatsApp."}
                     </p>
-                    <LinkButton href={CONTACT.links.whatsapp} variant="whatsapp" size="sm" className="mt-4">
+                    <LinkButton
+                      href={CONTACT.links.whatsapp}
+                      variant="whatsapp"
+                      size="sm"
+                      className="mt-4"
+                    >
                       <WhatsAppIcon />
                       WhatsApp Dr. Adithya
                     </LinkButton>
@@ -199,11 +204,20 @@ export function AppointmentForm() {
               <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
                 <label>
                   Website
-                  <input ref={honeypot} type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  <input
+                    ref={honeypot}
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
                 </label>
               </div>
 
-              <fieldset disabled={sending} className="grid min-w-0 grid-cols-1 gap-x-6 gap-y-5 md:grid-cols-2">
+              <fieldset
+                disabled={sending}
+                className="grid min-w-0 grid-cols-1 gap-x-6 gap-y-5 md:grid-cols-2"
+              >
                 <Field id="name" label="Full Name" error={errors.name}>
                   <input
                     id="appt-name"
@@ -212,7 +226,11 @@ export function AppointmentForm() {
                     maxLength={80}
                     value={values.name}
                     onChange={(e) => set("name")(e.target.value)}
-                    className={cn(fieldBase, "h-13", errors.name ? "border-destructive" : "border-border")}
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.name ? "border-destructive" : "border-border",
+                    )}
                     {...describe("name", errors.name)}
                   />
                 </Field>
@@ -227,7 +245,11 @@ export function AppointmentForm() {
                     placeholder="e.g. 98765 43210"
                     value={values.phone}
                     onChange={(e) => set("phone")(e.target.value)}
-                    className={cn(fieldBase, "h-13", errors.phone ? "border-destructive" : "border-border")}
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.phone ? "border-destructive" : "border-border",
+                    )}
                     {...describe("phone", errors.phone)}
                   />
                 </Field>
@@ -237,7 +259,12 @@ export function AppointmentForm() {
                     id="appt-gender"
                     value={values.gender}
                     onChange={(e) => set("gender")(e.target.value)}
-                    className={cn(fieldBase, "h-13", errors.gender ? "border-destructive" : "border-border", !values.gender && "text-muted-foreground/80")}
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.gender ? "border-destructive" : "border-border",
+                      !values.gender && "text-muted-foreground/80",
+                    )}
                     {...describe("gender", errors.gender)}
                   >
                     <option value="" disabled>
@@ -261,8 +288,14 @@ export function AppointmentForm() {
                     step={1}
                     value={values.age}
                     onChange={(e) => set("age")(e.target.value)}
-                    onKeyDown={(e) => ["-", "+", "e", "E", "."].includes(e.key) && e.preventDefault()}
-                    className={cn(fieldBase, "h-13", errors.age ? "border-destructive" : "border-border")}
+                    onKeyDown={(e) =>
+                      ["-", "+", "e", "E", "."].includes(e.key) && e.preventDefault()
+                    }
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.age ? "border-destructive" : "border-border",
+                    )}
                     {...describe("age", errors.age)}
                   />
                 </Field>
@@ -275,7 +308,11 @@ export function AppointmentForm() {
                     maxLength={254}
                     value={values.email}
                     onChange={(e) => set("email")(e.target.value)}
-                    className={cn(fieldBase, "h-13", errors.email ? "border-destructive" : "border-border")}
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.email ? "border-destructive" : "border-border",
+                    )}
                     {...describe("email", errors.email)}
                   />
                 </Field>
@@ -287,7 +324,11 @@ export function AppointmentForm() {
                     min={minDate || undefined}
                     value={values.date}
                     onChange={(e) => set("date")(e.target.value)}
-                    className={cn(fieldBase, "h-13", errors.date ? "border-destructive" : "border-border")}
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.date ? "border-destructive" : "border-border",
+                    )}
                     {...describe("date", errors.date)}
                   />
                 </Field>
@@ -302,7 +343,12 @@ export function AppointmentForm() {
                     id="appt-consultation"
                     value={values.consultation}
                     onChange={(e) => set("consultation")(e.target.value)}
-                    className={cn(fieldBase, "h-13", errors.consultation ? "border-destructive" : "border-border", !values.consultation && "text-muted-foreground/80")}
+                    className={cn(
+                      fieldBase,
+                      "h-13",
+                      errors.consultation ? "border-destructive" : "border-border",
+                      !values.consultation && "text-muted-foreground/80",
+                    )}
                     {...describe("consultation", errors.consultation)}
                   >
                     <option value="" disabled>
@@ -316,7 +362,12 @@ export function AppointmentForm() {
                   </select>
                 </Field>
 
-                <Field id="problem" label="How can we help you?" error={errors.problem} className="md:col-span-2">
+                <Field
+                  id="problem"
+                  label="How can we help you?"
+                  error={errors.problem}
+                  className="md:col-span-2"
+                >
                   <textarea
                     id="appt-problem"
                     rows={5}
@@ -324,15 +375,19 @@ export function AppointmentForm() {
                     placeholder="Please briefly describe your health concern, symptoms, lifestyle concern, or what you would like to discuss with the doctor."
                     value={values.problem}
                     onChange={(e) => set("problem")(e.target.value)}
-                    className={cn(fieldBase, "min-h-36 resize-y py-3 leading-relaxed", errors.problem ? "border-destructive" : "border-border")}
+                    className={cn(
+                      fieldBase,
+                      "min-h-36 resize-y py-3 leading-relaxed",
+                      errors.problem ? "border-destructive" : "border-border",
+                    )}
                     {...describe("problem", errors.problem)}
                   />
                 </Field>
               </fieldset>
 
               <p className="mt-4 text-xs text-muted-foreground">
-                The date you choose is a preference only. Dr. Adithya will contact you to arrange the
-                appointment.
+                The date you choose is a preference only. Dr. Adithya will contact you to arrange
+                the appointment.
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -346,11 +401,19 @@ export function AppointmentForm() {
                 </button>
                 <span className="text-sm text-muted-foreground">
                   Prefer to talk?{" "}
-                  <a href={CONTACT.links.whatsapp} target="_blank" rel="noopener noreferrer" className="font-semibold text-forest underline-offset-4 hover:underline">
+                  <a
+                    href={CONTACT.links.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-forest underline-offset-4 hover:underline"
+                  >
                     WhatsApp
                   </a>{" "}
                   or{" "}
-                  <a href={CONTACT.links.phone} className="font-semibold text-forest underline-offset-4 hover:underline">
+                  <a
+                    href={CONTACT.links.phone}
+                    className="font-semibold text-forest underline-offset-4 hover:underline"
+                  >
                     call
                   </a>
                   .
@@ -359,8 +422,8 @@ export function AppointmentForm() {
 
               <p className="mt-8 flex items-start gap-3 rounded-2xl border border-gold/30 bg-sage-mist/60 px-4 py-3 text-sm leading-relaxed text-forest-deep">
                 <ShieldAlert className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-                Please avoid sharing emergency or highly sensitive information through this form. For
-                emergencies, seek appropriate emergency medical care.
+                Please avoid sharing emergency or highly sensitive information through this form.
+                For emergencies, seek appropriate emergency medical care.
               </p>
             </form>
           )}
@@ -394,7 +457,10 @@ function Field({
   return (
     <div className={cn("min-w-0", className)}>
       <label htmlFor={`appt-${id}`} className="mb-2 block text-sm font-semibold text-forest-deep">
-        {label} <span className="text-gold" aria-hidden="true">*</span>
+        {label}{" "}
+        <span className="text-gold" aria-hidden="true">
+          *
+        </span>
       </label>
       {children}
       {error && (
