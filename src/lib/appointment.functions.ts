@@ -51,6 +51,12 @@ export const requestAppointment = createServerFn({ method: "POST" })
     const { getRequestHeader } = await import("@tanstack/react-start/server");
     const requestOrigin = getRequestHeader("origin");
     const requestReferer = getRequestHeader("referer");
+    const forwardedHost = getRequestHeader("x-forwarded-host");
+    const forwardedProto = getRequestHeader("x-forwarded-proto") ?? "https";
+    const siteUrl =
+      requestOrigin ??
+      (forwardedHost ? `${forwardedProto}://${forwardedHost}` : undefined);
+    const formPageUrl = requestReferer ?? (siteUrl ? `${siteUrl}/` : undefined);
     const ip =
       getRequestHeader("cf-connecting-ip") ??
       getRequestHeader("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -68,7 +74,7 @@ export const requestAppointment = createServerFn({ method: "POST" })
       _template: "table",
       _captcha: "false",
       _replyto: a.email,
-      _autoresponse: patientConfirmationText(a),
+      ...(formPageUrl ? { _url: formPageUrl } : {}),
       "New Consultation Appointment Request": "Patient Details",
       Name: a.name,
       Phone: a.phone,
