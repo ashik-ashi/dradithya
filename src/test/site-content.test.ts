@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CONTACT, SERVICES, formatINR } from "@/lib/site";
 
-const price = (title: string) => SERVICES.find((s) => s.title === title)?.price;
-
 describe("Service prices", () => {
   it("uses the four current services and exact prices", () => {
     expect(SERVICES.map(({ title, price }) => [title, price])).toEqual([
