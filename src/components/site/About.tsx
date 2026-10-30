@@ -56,9 +56,8 @@ export function About() {
               BNYS Intern
             </span>
             <div className="mt-6 space-y-4 text-[1.02rem] leading-relaxed text-muted-foreground">
-              <p className="font-display text-2xl text-forest">Hello, I’m Dr. Adithya Surya,</p>
               <p>
-                a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
+                Hello, I’m Dr. Adithya Surya, a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
               </p>
             </div>
           </Reveal>
