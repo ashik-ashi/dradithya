@@ -5,9 +5,9 @@ export const GENDERS = ["Male", "Female", "Other", "Prefer not to say"] as const
 
 export const CONSULTATION_TYPES = [
   "Personal Consultation",
+  "Personalised Diet Plan",
+  "Personalised Diet & Consultation",
   "4-Week Lifestyle Program",
-  "Group Education Program",
-  "Follow-up Session",
 ] as const;
 
 export const AGE_MIN = 1;
