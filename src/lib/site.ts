@@ -46,8 +46,8 @@ export const SERVICES: Service[] = [
     id: "consultation",
     title: "Personal Consultation",
     price: 300,
-    duration: "30–45 minutes",
-    description: "30–45 minutes",
+    duration: "15–30 minutes",
+    description: "15–30 minutes",
     cta: "Book Consultation",
   },
   {
