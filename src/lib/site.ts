@@ -5,12 +5,12 @@ export const CONTACT = {
   tagline: "YOUR HEALTH | YOUR HABITS | OUR FOCUS",
   location: "Hassan, Karnataka, India",
   phone: "6362966465",
-  email: "rpthackers@gmail.com",
+  email: "adithaysurya472@gmail.com",
   instagramHandle: "@vaidyaadithya_",
   links: {
     whatsapp: "https://wa.me/916362966465",
     phone: "tel:6362966465",
-    email: "mailto:rpthackers@gmail.com",
+    email: "mailto:adithaysurya472@gmail.com",
     instagram: "https://www.instagram.com/vaidyaadithya_/",
   },
 } as const;
