@@ -6,22 +6,18 @@ import {
   CONSULTATION_TYPES,
   GENDERS,
   appointmentSchema,
-  doctorEmailSubject,
-  formatPreferredDate,
   todayInIndia,
   whatsappDetailsUrl,
   type Appointment,
   type AppointmentField,
 } from "@/lib/appointment";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, SERVICES, formatINR } from "@/lib/site";
+import { requestAppointment } from "@/lib/appointment.functions";
 import { cn } from "@/lib/utils";
 import { LinkButton } from "./LinkButton";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { LeafSprig, WhatsAppIcon } from "./icons";
-
-// Paste the Web3Forms access key for adithaysurya472@gmail.com here when ready.
-const WEB3FORMS_ACCESS_KEY = "93f7dc54-0476-491e-af74-fc86fd178796";
 
 type Values = Record<AppointmentField, string>;
 const EMPTY: Values = {
@@ -96,55 +92,21 @@ export function AppointmentForm() {
     setRateLimited(false);
     setSendError(null);
     try {
-      const accessKey = WEB3FORMS_ACCESS_KEY;
-      if (!accessKey || accessKey === "PASTE_WEB3FORMS_ACCESS_KEY_HERE") {
-        throw new Error("Appointment email is not configured yet. Please contact us on WhatsApp.");
-      }
-
-      // Basic client-side bot checks. Web3Forms also applies its own spam protection.
-      if (honeypot.current?.value || Date.now() - openedAt.current < 2500) {
-        throw new Error("Your request could not be verified. Please refresh the page and try again.");
-      }
-
       const a = parsed.data;
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      const result = await requestAppointment({
+        data: {
+          fields: a,
+          website: honeypot.current?.value ?? "",
+          elapsedMs: Date.now() - openedAt.current,
         },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: doctorEmailSubject(a.name),
-          from_name: "Dr. Adithya Appointment Website",
-          email: a.email,
-          replyto: a.email,
-          botcheck: false,
-          "Patient Name": a.name,
-          "Phone Number": a.phone,
-          Gender: a.gender,
-          Age: String(a.age),
-          "Patient Email": a.email,
-          "Preferred Appointment Date": formatPreferredDate(a.date),
-          "Consultation Type": a.consultation,
-          "Health Concern / Problem": a.problem,
-          "Submitted On": `${new Intl.DateTimeFormat("en-IN", {
-            dateStyle: "medium",
-            timeStyle: "short",
-            timeZone: "Asia/Kolkata",
-          }).format(new Date())} IST`,
-        }),
       });
-
-      const result = (await response.json().catch(() => null)) as
-        | { success?: boolean; message?: string; error?: string; body?: { message?: string } }
-        | null;
-      if (!response.ok || result?.success !== true) {
+      if (!result.ok) {
+        if (result.reason === "rate_limited") setRateLimited(true);
         throw new Error(
-          result?.message ||
-            result?.body?.message ||
-            result?.error ||
-            `Email service returned HTTP ${response.status}. Please try again later.`,
+          result.message ||
+            (result.reason === "rate_limited"
+              ? "Too many requests. Please wait a few minutes and try again."
+              : "Unable to send your request. Please try again later."),
         );
       }
 
