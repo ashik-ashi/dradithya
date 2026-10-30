@@ -98,14 +98,26 @@ export const requestAppointment = createServerFn({ method: "POST" })
         },
         body: JSON.stringify(body),
       });
-      const json = (await res.json().catch(() => null)) as {
-        success?: string | boolean;
-        message?: string;
-      } | null;
+      const responseText = await res.text();
+      let json: { success?: string | boolean; message?: string } | null = null;
+      try {
+        json = JSON.parse(responseText) as { success?: string | boolean; message?: string };
+      } catch {
+        // Some upstream errors (including access-denied responses) are HTML/plain text.
+      }
       const ok = res.ok && (json?.success === true || json?.success === "true");
       if (!ok) {
-        console.error("Appointment relay rejected", res.status, json?.message);
-        return { ok: false, reason: "send_failed", message: json?.message || `Email service returned HTTP ${res.status}.` };
+        const upstreamMessage =
+          json?.message ||
+          (responseText.trim() && !responseText.trim().startsWith("<")
+            ? responseText.trim().slice(0, 300)
+            : undefined);
+        console.error("Appointment relay rejected", res.status, upstreamMessage || "No readable upstream message");
+        return {
+          ok: false,
+          reason: "send_failed",
+          message: upstreamMessage || `Email service returned HTTP ${res.status}. Check the recipient activation email and Vercel function logs.`,
+        };
       }
       return { ok: true };
     } catch (err) {
