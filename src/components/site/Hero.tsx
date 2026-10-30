@@ -1,5 +1,4 @@
 import { Leaf, PhoneCall } from "lucide-react";
-import doctor from "@/assets/dr-adithya.jpg.asset.json";
 import { CONTACT } from "@/lib/site";
 import { LinkButton } from "./LinkButton";
 import { LeafSprig, WhatsAppIcon } from "./icons";
@@ -82,7 +81,7 @@ export function Hero() {
           />
           <div className="group relative overflow-hidden rounded-[2rem] bg-plate shadow-lift ring-1 ring-forest/10">
             <img
-              src={doctor.url}
+              src="/doctor.jpg"
               alt="Dr. Adithya, BNYS std"
               width={1024}
               height={731}
