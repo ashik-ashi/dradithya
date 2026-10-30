@@ -1,5 +1,6 @@
 import { CalendarCheck, Check, ClipboardList, Clock, Stethoscope, Users } from "lucide-react";
-import { CONTACT, SERVICES, formatINR } from "@/lib/site";
+import { APPOINTMENT_ANCHOR, CONTACT, SERVICES, formatINR } from "@/lib/site";
+import { SELECT_CONSULTATION_EVENT } from "./AppointmentForm";
 import { LinkButton } from "./LinkButton";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -53,14 +54,19 @@ export function Services() {
                     {s.duration}
                   </p>
                 )}
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.description}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {s.description}
+                </p>
 
                 {s.list && (
                   <div className="mt-5">
                     <p className="eyebrow text-[0.65rem] text-forest">{s.listLabel}</p>
                     <ul className="mt-3 space-y-2">
                       {s.list.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                        <li
+                          key={item}
+                          className="flex items-start gap-2.5 text-sm text-foreground/85"
+                        >
                           <Check className="mt-0.5 size-4 shrink-0 text-sage" aria-hidden="true" />
                           {item}
                         </li>
@@ -70,16 +76,31 @@ export function Services() {
                 )}
 
                 <div className="mt-auto pt-7">
-                  <LinkButton
-                    href={`${CONTACT.links.whatsapp}?text=${encodeURIComponent(
-                      `Hello Dr. Adithya, I'm interested in the ${s.title} (${formatINR(s.price)}).`,
-                    )}`}
-                    variant={i % 2 === 0 ? "primary" : "outline"}
-                    className="w-full"
-                    aria-label={`${s.cta} – ${s.title} on WhatsApp`}
-                  >
-                    {s.cta}
-                  </LinkButton>
+                  {s.cta === "Book Consultation" ? (
+                    <LinkButton
+                      href={APPOINTMENT_ANCHOR}
+                      variant={i % 2 === 0 ? "primary" : "outline"}
+                      className="w-full"
+                      onClick={() =>
+                        window.dispatchEvent(
+                          new CustomEvent(SELECT_CONSULTATION_EVENT, { detail: s.title }),
+                        )
+                      }
+                    >
+                      {s.cta}
+                    </LinkButton>
+                  ) : (
+                    <LinkButton
+                      href={`${CONTACT.links.whatsapp}?text=${encodeURIComponent(
+                        `Hello Dr. Adithya, I'm interested in the ${s.title} (${formatINR(s.price)}).`,
+                      )}`}
+                      variant={i % 2 === 0 ? "primary" : "outline"}
+                      className="w-full"
+                      aria-label={`${s.cta} – ${s.title} on WhatsApp`}
+                    >
+                      {s.cta}
+                    </LinkButton>
+                  )}
                 </div>
               </Reveal>
             );

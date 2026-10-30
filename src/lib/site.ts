@@ -15,6 +15,11 @@ export const CONTACT = {
   },
 } as const;
 
+/** Public site address; the email relay ties its one-time activation to this. */
+export const SITE_URL = "https://pixel-perfect-replay-97283.lovable.app";
+
+export const APPOINTMENT_ANCHOR = "#appointment";
+
 export const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },

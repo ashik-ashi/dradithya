@@ -14,3 +14,5 @@
 - All contact details, prices and service copy live in `src/lib/site.ts` so every section (services, payment, footer) stays consistent.
 - Uploaded logo, doctor photo and payment QR are served via `.asset.json` pointers in `src/assets/`; never replace, crop, filter or overlay the QR.
 - Colors/fonts are tokens in `src/styles.css`; components use semantic classes only.
+- Appointment requests are validated in a server function (`src/lib/appointment.functions.ts`) and relayed to the doctor via FormSubmit's AJAX endpoint with a fixed Referer (`SITE_URL`), so one relay activation covers preview and published; nothing is stored because the owner chose email-only.
+- Form rules and message text live in `src/lib/appointment.ts`, shared by browser and server so both validate identically.

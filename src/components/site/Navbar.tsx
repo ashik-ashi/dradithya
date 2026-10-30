@@ -72,7 +72,7 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <LinkButton href="#services" size="sm" className="hidden sm:inline-flex">
+          <LinkButton href="#appointment" size="sm" className="hidden sm:inline-flex">
             Book Consultation
           </LinkButton>
           <button
@@ -111,7 +111,7 @@ export function Navbar() {
               </li>
             ))}
             <li className="pt-3">
-              <LinkButton href="#services" className="w-full" onClick={() => setOpen(false)}>
+              <LinkButton href="#appointment" className="w-full" onClick={() => setOpen(false)}>
                 Book Consultation
               </LinkButton>
             </li>
