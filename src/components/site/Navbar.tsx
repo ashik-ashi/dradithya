@@ -49,7 +49,7 @@ export function Navbar() {
         >
           <img
             src="/logo.jpg"
-            alt="Dr. Adithya Health & Wellness"
+            alt="Dr Adithya Surya Health & Wellness"
             width={1280}
             height={714}
             className="h-12 w-auto sm:h-[3.25rem]"
