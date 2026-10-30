@@ -1,6 +1,5 @@
 import { Clock, Stethoscope, Salad, ClipboardList } from "lucide-react";
-import { APPOINTMENT_ANCHOR, CONTACT, SERVICES, formatINR } from "@/lib/site";
-import { SELECT_CONSULTATION_EVENT } from "./AppointmentForm";
+import { CONTACT, SERVICES, formatINR } from "@/lib/site";
 import { LinkButton } from "./LinkButton";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
