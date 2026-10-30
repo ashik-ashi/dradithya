@@ -37,13 +37,8 @@ export function Hero() {
           </p>
 
           <div className="animate-fade mt-7 max-w-xl space-y-4" style={delay(420)}>
-            <p className="font-display text-xl text-forest">Hello, I’m Dr. Adithya Surya,</p>
             <p className="leading-relaxed text-muted-foreground">
-              a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
-            </p>
-            <p className="flex items-start gap-3 rounded-2xl border border-gold/30 bg-paper/70 px-4 py-3 text-sm leading-relaxed text-forest-deep">
-              <Leaf className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-              Reliable wellness information made easier to understand in Kannada and English.
+              Hello, I’m Dr. Adithya Surya, a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
             </p>
           </div>
 
