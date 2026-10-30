@@ -1,4 +1,4 @@
-import { BookOpen, HeartHandshake, Languages, Sprout } from "lucide-react";
+import { BookOpen, HeartHandshake, Languages, Sprout, Flower2, Salad } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { TwinLeaf } from "./icons";
 
@@ -6,22 +6,32 @@ const FEATURES = [
   {
     icon: BookOpen,
     title: "Health Education",
-    text: "Provide understandable and practical health information.",
+    text: "Evidence-informed health information to help you understand your body, health conditions and preventive care.",
+  },
+  {
+    icon: Flower2,
+    title: "Yoga & Naturopathy",
+    text: "Explore natural health practices through yoga, breathing techniques, relaxation and naturopathic principles.",
+  },
+  {
+    icon: Salad,
+    title: "Nutrition & Diet Guidance",
+    text: "Practical, personalised nutrition guidance to build healthier eating habits and support overall well-being.",
   },
   {
     icon: Sprout,
-    title: "Lifestyle Guidance",
-    text: "Support healthier everyday habits and lifestyle choices.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Personalised Support",
-    text: "Guidance based on individual lifestyle concerns within professional scope.",
+    title: "Personalised Lifestyle Guidance",
+    text: "Individual-focused guidance based on your health concerns, daily routine, nutrition and lifestyle factors.",
   },
   {
     icon: Languages,
-    title: "Kannada & English",
-    text: "Health information explained clearly in both Kannada and English.",
+    title: "Kannada & English Support",
+    text: "Understand your health better with simple, accessible health education in both Kannada and English.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Holistic Wellness",
+    text: "A balanced approach to physical and mental well-being through nutrition, movement, sleep and healthy daily habits.",
   },
 ];
 
@@ -36,7 +46,7 @@ export function About() {
               id="about-title"
               className="mt-3 text-[2rem] leading-[1.1] font-semibold sm:text-[2.6rem]"
             >
-              About Dr Adithya Surya Surya
+              About Dr. Adithya Surya
             </h2>
             <div className="mt-5 flex items-center gap-3">
               <TwinLeaf className="h-4 w-7 text-sage" />
@@ -46,17 +56,15 @@ export function About() {
               BNYS Intern
             </span>
             <div className="mt-6 space-y-4 text-[1.02rem] leading-relaxed text-muted-foreground">
-              <p className="font-display text-2xl text-forest">Hello, I'm Dr Adithya Surya.</p>
+              <p className="font-display text-2xl text-forest">Hello, I’m Dr. Adithya Surya,</p>
               <p>
-                I am a BNYS intern sharing health education and lifestyle guidance to help people make
-                informed, practical choices. My goal is to make reliable wellness information easier to
-                understand in Kannada and English.
+                a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
               </p>
             </div>
           </Reveal>
         </div>
 
-        <ul className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+        <ul className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
           {FEATURES.map(({ icon: Icon, title, text }, i) => (
             <Reveal as="li" key={title} delay={i * 110} className="group card-premium card-hover p-6">
               <span className="icon-badge size-12 group-hover:-translate-y-1">
