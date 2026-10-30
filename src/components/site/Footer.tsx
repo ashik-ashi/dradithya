@@ -12,7 +12,7 @@ export function Footer() {
             <a href="#home" className="inline-block overflow-hidden rounded-2xl bg-plate ring-1 ring-gold/40">
               <img
                 src="/logo.jpg"
-                alt="Dr. Adithya Health & Wellness"
+                alt="Dr Adithya Surya Health & Wellness"
                 width={1280}
                 height={714}
                 loading="lazy"
@@ -98,7 +98,7 @@ export function Footer() {
             This website provides health education and lifestyle guidance. It is not a substitute for
             emergency medical care or diagnosis by a qualified medical professional.
           </p>
-          <p className="mt-4">© 2026 Dr. Adithya. All rights reserved.</p>
+          <p className="mt-4">© 2026 Dr Adithya Surya. All rights reserved.</p>
         </div>
       </Reveal>
     </footer>
