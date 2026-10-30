@@ -11,6 +11,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Payment } from "@/components/site/Payment";
 import { Services } from "@/components/site/Services";
 import { WellnessGuide } from "@/components/site/WellnessGuide";
+import { WellnessKits } from "@/components/site/WellnessKits";
 
 const TITLE = "Dr. Adithya | Health & Wellness Consultation";
 const DESCRIPTION =
@@ -48,6 +49,7 @@ function Index() {
         <Hero />
         <About />
         <Services />
+        <WellnessKits />
         <AppointmentForm />
         <ConsultationCta />
         <WellnessGuide />
