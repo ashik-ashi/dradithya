@@ -237,7 +237,7 @@ export function AppointmentForm() {
                     id="appt-gender"
                     value={values.gender}
                     onChange={(e) => set("gender")(e.target.value)}
-                    className={cn(fieldBase, "h-13 appearance-none bg-[length:1rem] pr-10", errors.gender ? "border-destructive" : "border-border", !values.gender && "text-muted-foreground/80")}
+                    className={cn(fieldBase, "h-13", errors.gender ? "border-destructive" : "border-border", !values.gender && "text-muted-foreground/80")}
                     {...describe("gender", errors.gender)}
                   >
                     <option value="" disabled>
@@ -302,7 +302,7 @@ export function AppointmentForm() {
                     id="appt-consultation"
                     value={values.consultation}
                     onChange={(e) => set("consultation")(e.target.value)}
-                    className={cn(fieldBase, "h-13 appearance-none pr-10", errors.consultation ? "border-destructive" : "border-border", !values.consultation && "text-muted-foreground/80")}
+                    className={cn(fieldBase, "h-13", errors.consultation ? "border-destructive" : "border-border", !values.consultation && "text-muted-foreground/80")}
                     {...describe("consultation", errors.consultation)}
                   >
                     <option value="" disabled>

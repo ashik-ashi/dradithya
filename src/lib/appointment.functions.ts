@@ -39,7 +39,7 @@ function rateLimited(key: string): boolean {
 export const requestAppointment = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => payloadSchema.parse(input))
   .handler(async ({ data }): Promise<Result> => {
-    // Bots: pretend success silently is avoided; just reject without sending.
+    // Likely bot: honeypot filled or submitted implausibly fast. Never send.
     if (data.website.trim() !== "" || data.elapsedMs < 2500) {
       return { ok: false, reason: "invalid" };
     }

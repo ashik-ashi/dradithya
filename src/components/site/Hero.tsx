@@ -55,7 +55,7 @@ export function Hero() {
             className="animate-rise mt-8 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:flex-wrap"
             style={delay(560)}
           >
-            <LinkButton href="#services" size="lg">
+            <LinkButton href="#appointment" size="lg">
               Book Consultation
             </LinkButton>
             <LinkButton href={CONTACT.links.whatsapp} variant="outline" size="lg">
