@@ -1,5 +1,4 @@
 import { BookOpen, HeartHandshake, Languages, Sprout } from "lucide-react";
-import doctor from "@/assets/dr-adithya.jpg.asset.json";
 import { Reveal } from "./Reveal";
 import { TwinLeaf } from "./icons";
 
@@ -30,25 +29,7 @@ export function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="bg-paper py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <Reveal from="left" className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="group overflow-hidden rounded-[2rem] rounded-tl-[6rem] bg-plate shadow-lift ring-1 ring-forest/10">
-              <img
-                src={doctor.url}
-                alt="Dr. Adithya, BNYS Intern"
-                width={1024}
-                height={731}
-                loading="lazy"
-                decoding="async"
-                className="aspect-[4/5] h-auto w-full object-cover object-[76%_center] transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-              />
-            </div>
-            <div className="absolute -right-2 bottom-8 rounded-2xl bg-forest px-5 py-3 text-forest-foreground shadow-lift sm:-right-6">
-              <p className="eyebrow text-gold-soft">Qualification</p>
-              <p className="mt-1 font-display text-lg">BNYS Intern</p>
-            </div>
-          </Reveal>
-
+        <div className="max-w-3xl">
           <Reveal from="right" className="min-w-0">
             <p className="eyebrow">About</p>
             <h2
