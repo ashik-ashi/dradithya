@@ -21,7 +21,7 @@ import { SectionHeading } from "./SectionHeading";
 import { LeafSprig, WhatsAppIcon } from "./icons";
 
 // Paste the Web3Forms access key for adithaysurya472@gmail.com here when ready.
-const WEB3FORMS_ACCESS_KEY = "262d725a-8d82-44ef-9af3-4e5b52590dbe";
+const WEB3FORMS_ACCESS_KEY = "93f7dc54-0476-491e-af74-fc86fd178796";
 
 type Values = Record<AppointmentField, string>;
 const EMPTY: Values = {
