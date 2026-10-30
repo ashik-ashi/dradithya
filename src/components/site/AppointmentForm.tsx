@@ -42,7 +42,7 @@ const fieldBase =
 export function AppointmentForm() {
   const send = useServerFn(requestAppointment);
   const [values, setValues] = useState<Values>(EMPTY);
-  const [errors, setErrors] = useState<Partial<Record<AppointmentField, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<AppointmentField, string | undefined>>>({});
   const [status, setStatus] = useState<Status>("idle");
   const [rateLimited, setRateLimited] = useState(false);
   const [sent, setSent] = useState<Appointment | null>(null);
@@ -77,7 +77,7 @@ export function AppointmentForm() {
 
     const parsed = appointmentSchema(todayInIndia()).safeParse(values);
     if (!parsed.success) {
-      const next: Partial<Record<AppointmentField, string>> = {};
+      const next: Partial<Record<AppointmentField, string | undefined>> = {};
       for (const issue of parsed.error.issues) {
         const key = issue.path[0] as AppointmentField;
         if (!next[key]) next[key] = issue.message;
