@@ -4,9 +4,7 @@ import {
   appointmentSchema,
   doctorEmailSubject,
   formatPreferredDate,
-  patientConfirmationText,
 } from "@/lib/appointment";
-import { CONTACT } from "@/lib/site";
 
 const payloadSchema = z.object({
   fields: z.record(z.unknown()),
