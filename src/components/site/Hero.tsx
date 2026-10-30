@@ -82,7 +82,7 @@ export function Hero() {
           <div className="group relative overflow-hidden rounded-[2rem] bg-plate shadow-lift ring-1 ring-forest/10">
             <img
               src="/doctor.jpg"
-              alt="Dr. Adithya, BNYS std"
+              alt="Dr. Adithya"
               width={1024}
               height={731}
               fetchPriority="high"
@@ -92,7 +92,7 @@ export function Hero() {
           <LeafSprig className="pointer-events-none absolute -right-4 -bottom-10 w-28 text-sage sm:-right-8 sm:w-36" />
           <div className="absolute -bottom-6 left-4 max-w-[calc(100%-2rem)] rounded-2xl border border-border bg-paper px-4 py-3 shadow-soft sm:left-6">
             <p className="font-display text-base leading-tight text-forest-deep">Dr. Adithya</p>
-            <p className="eyebrow mt-1 text-[0.62rem]">BNYS Student</p>
+            <p className="eyebrow mt-1 text-[0.62rem]">BNYS Intern</p>
           </div>
         </div>
       </div>
