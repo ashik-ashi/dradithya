@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { AlertCircle, CalendarCheck, Loader2, ShieldAlert } from "lucide-react";
 import {
   AGE_MAX,
@@ -12,7 +11,6 @@ import {
   type Appointment,
   type AppointmentField,
 } from "@/lib/appointment";
-import { requestAppointment } from "@/lib/appointment.functions";
 import { CONTACT } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { LinkButton } from "./LinkButton";
@@ -40,7 +38,6 @@ const fieldBase =
   "w-full rounded-2xl border bg-paper px-4 text-base text-foreground shadow-[inset_0_1px_2px_oklch(0_0_0/0.03)] transition-[border-color,box-shadow] duration-200 placeholder:text-muted-foreground/70 focus:border-forest focus:ring-2 focus:ring-sage/40 focus:outline-none disabled:opacity-60";
 
 export function AppointmentForm() {
-  const send = useServerFn(requestAppointment);
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Partial<Record<AppointmentField, string | undefined>>>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -92,25 +89,70 @@ export function AppointmentForm() {
     sendingRef.current = true;
     setStatus("sending");
     setRateLimited(false);
+    setSendError(null);
     try {
-      const result = await send({
-        data: {
-          fields: values,
-          website: honeypot.current?.value ?? "",
-          elapsedMs: Math.min(Date.now() - openedAt.current, 86_400_000),
-        },
-      });
-      if (result.ok) {
-        setSent(parsed.data);
-        setValues(EMPTY);
-        setErrors({});
-        setStatus("success");
-      } else {
-        setRateLimited(result.reason === "rate_limited");
-        setSendError(result.message ?? null);
-        setStatus("error");
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+        throw new Error("Appointment email is not configured yet. Please contact us on WhatsApp.");
       }
-    } catch {
+
+      // Basic client-side bot checks. Web3Forms also applies its own spam protection.
+      if (honeypot.current?.value || Date.now() - openedAt.current < 2500) {
+        throw new Error("Your request could not be verified. Please refresh the page and try again.");
+      }
+
+      const a = parsed.data;
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: doctorEmailSubject(a.name),
+          from_name: "Dr. Adithya Appointment Website",
+          email: a.email,
+          replyto: a.email,
+          botcheck: false,
+          "Patient Name": a.name,
+          "Phone Number": a.phone,
+          Gender: a.gender,
+          Age: String(a.age),
+          "Patient Email": a.email,
+          "Preferred Appointment Date": formatPreferredDate(a.date),
+          "Consultation Type": a.consultation,
+          "Health Concern / Problem": a.problem,
+          "Submitted On": `${new Intl.DateTimeFormat("en-IN", {
+            dateStyle: "medium",
+            timeStyle: "short",
+            timeZone: "Asia/Kolkata",
+          }).format(new Date())} IST`,
+        }),
+      });
+
+      const result = (await response.json().catch(() => null)) as
+        | { success?: boolean; message?: string; error?: string; body?: { message?: string } }
+        | null;
+      if (!response.ok || result?.success !== true) {
+        throw new Error(
+          result?.message ||
+            result?.body?.message ||
+            result?.error ||
+            `Email service returned HTTP ${response.status}. Please try again later.`,
+        );
+      }
+
+      setSent(a);
+      setValues(EMPTY);
+      setErrors({});
+      setStatus("success");
+    } catch (err) {
+      setSendError(
+        err instanceof Error
+          ? err.message
+          : "Unable to send your appointment request. Please try again.",
+      );
       setStatus("error");
     } finally {
       sendingRef.current = false;
