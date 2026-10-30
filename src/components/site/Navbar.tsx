@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/dr-adithya-logo.jpg.asset.json";
 import { NAV_ITEMS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { LinkButton } from "./LinkButton";
@@ -49,7 +48,7 @@ export function Navbar() {
           onClick={() => setOpen(false)}
         >
           <img
-            src={logo.url}
+            src="/logo.jpg"
             alt="Dr. Adithya Health & Wellness"
             width={1280}
             height={714}
