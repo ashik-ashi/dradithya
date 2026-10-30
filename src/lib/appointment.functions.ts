@@ -16,7 +16,7 @@ const payloadSchema = z.object({
   elapsedMs: z.number().int().nonnegative().max(86_400_000),
 });
 
-type Result = { ok: true } | { ok: false; reason: "invalid" | "rate_limited" | "send_failed" };
+type Result = { ok: true } | { ok: false; reason: "invalid" | "rate_limited" | "send_failed"; message?: string };
 
 // Best-effort per-instance limiter: 3 requests per 10 minutes per visitor.
 const WINDOW_MS = 10 * 60 * 1000;
@@ -105,11 +105,11 @@ export const requestAppointment = createServerFn({ method: "POST" })
       const ok = res.ok && (json?.success === true || json?.success === "true");
       if (!ok) {
         console.error("Appointment relay rejected", res.status, json?.message);
-        return { ok: false, reason: "send_failed" };
+        return { ok: false, reason: "send_failed", message: json?.message || `Email service returned HTTP ${res.status}.` };
       }
       return { ok: true };
     } catch (err) {
       console.error("Appointment relay error", err instanceof Error ? err.message : "unknown");
-      return { ok: false, reason: "send_failed" };
+      return { ok: false, reason: "send_failed", message: "Could not connect to the email service. Please check the Vercel function logs." };
     }
   });
