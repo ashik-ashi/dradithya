@@ -45,6 +45,7 @@ export function AppointmentForm() {
   const [errors, setErrors] = useState<Partial<Record<AppointmentField, string | undefined>>>({});
   const [status, setStatus] = useState<Status>("idle");
   const [rateLimited, setRateLimited] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [sent, setSent] = useState<Appointment | null>(null);
   const [minDate, setMinDate] = useState("");
   const honeypot = useRef<HTMLInputElement>(null);
@@ -106,6 +107,7 @@ export function AppointmentForm() {
         setStatus("success");
       } else {
         setRateLimited(result.reason === "rate_limited");
+        setSendError(result.message ?? null);
         setStatus("error");
       }
     } catch {
@@ -185,6 +187,8 @@ export function AppointmentForm() {
                     <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                       {rateLimited
                         ? "Too many requests were sent from this connection. Please wait a few minutes, or contact Dr. Adithya directly on WhatsApp."
+                        : sendError
+                        ? `Email service: ${sendError}`
                         : "Unable to send your appointment request right now. Please try again or contact us directly on WhatsApp."}
                     </p>
                     <LinkButton
