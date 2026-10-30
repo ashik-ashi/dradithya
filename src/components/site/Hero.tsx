@@ -34,7 +34,7 @@ export function Hero() {
             style={delay(320)}
           >
             Your Health <span className="text-gold">|</span> Your Habits{" "}
-            <span className="text-gold">|</span> Our Focus
+            <span className="text-gold">|</span> OUR FOCUS
           </p>
 
           <div className="animate-fade mt-7 max-w-xl space-y-4" style={delay(420)}>
