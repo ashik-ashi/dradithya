@@ -1,7 +1,7 @@
 export const CONTACT = {
   name: "Dr. Adithya",
   qualification: "BNYS Intern",
-  kannadaTitle: "ನಿಮ್ಮ ಆರೋಗ್ಯ ನನ್ನ ಕೈಯಲ್ಲಿದೆ",
+  kannadaTitle: "ನಿಮ್ಮ ಆರೋಗ್ಯ ನನ್ನ ಆದ್ಯತೆ",
   tagline: "YOUR HEALTH | YOUR HABITS | OUR FOCUS",
   location: "Hassan, Karnataka, India",
   phone: "6362966465",
@@ -24,6 +24,7 @@ export const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Wellness Kits", href: "#wellness-kits" },
   { label: "Wellness Guide", href: "#wellness" },
   { label: "Payment", href: "#payment" },
   { label: "Contact", href: "#contact" },
@@ -44,43 +45,32 @@ export const SERVICES: Service[] = [
   {
     id: "consultation",
     title: "Personal Consultation",
-    price: 499,
+    price: 300,
     duration: "30–45 minutes",
-    description:
-      "Discuss your health concerns and lifestyle. Review diet, sleep, stress and other lifestyle factors and receive personalised guidance within professional scope.",
+    description: "30–45 minutes",
     cta: "Book Consultation",
+  },
+  {
+    id: "diet-plan",
+    title: "Personalised Diet Plan",
+    price: 250,
+    description: "Progress review",
+    cta: "Enquire on WhatsApp",
+  },
+  {
+    id: "diet-consultation",
+    title: "Personalised Diet & Consultation",
+    price: 500,
+    description: "Comprehensive diet planning paired with an initial deep-dive consultation.",
+    cta: "Enquire on WhatsApp",
   },
   {
     id: "lifestyle-program",
     title: "4-Week Lifestyle Program",
     price: 2499,
     duration: "4 weeks",
-    description:
-      "Lifestyle guidance, habit tracking and scheduled follow-ups to help build consistent healthy habits.",
-    listLabel: "Includes",
-    list: [
-      "Personalised lifestyle guidance",
-      "Lifestyle modifications",
-      "Habit tracking",
-      "Scheduled follow-ups",
-    ],
+    description: "Lifestyle guidance, habit tracker & scheduled follow-ups",
     cta: "Join Program",
-  },
-  {
-    id: "group-education",
-    title: "Group Education Program",
-    price: 999,
-    description: "Group learning and practical lifestyle education.",
-    listLabel: "Topics",
-    list: ["Nutrition", "Sleep", "Exercise", "Stress management", "Healthy lifestyle habits"],
-    cta: "Join Program",
-  },
-  {
-    id: "follow-up",
-    title: "Follow-up Session",
-    price: 299,
-    description: "Review your progress, discuss challenges and make necessary adjustments.",
-    cta: "Book Follow-up",
   },
 ];
 
