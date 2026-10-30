@@ -7,19 +7,19 @@ import { WhatsAppIcon } from "./icons";
 const KITS = [
   {
     name: "Hairfall Kit",
-    message: "Hello Dr. Adithya, I am interested in the Hairfall Kit. I would like to know more about it.",
+    message: "Hello Dr Adithya Surya, I am interested in the Hairfall Kit. I would like to know more about it.",
   },
   {
     name: "Seed Cycling Kit",
-    message: "Hello Dr. Adithya, I am interested in the Seed Cycling Kit. I would like to know more about it.",
+    message: "Hello Dr Adithya Surya, I am interested in the Seed Cycling Kit. I would like to know more about it.",
   },
   {
     name: "Thyroid Kit",
-    message: "Hello Dr. Adithya, I am interested in the Thyroid Kit. I would like to know more about it.",
+    message: "Hello Dr Adithya Surya, I am interested in the Thyroid Kit. I would like to know more about it.",
   },
   {
     name: "Anti-inflammatory Kit",
-    message: "Hello Dr. Adithya, I am interested in the Anti-inflammatory Kit. I would like to know more about it.",
+    message: "Hello Dr Adithya Surya, I am interested in the Anti-inflammatory Kit. I would like to know more about it.",
   },
 ];
 
@@ -31,7 +31,7 @@ export function WellnessKits() {
           id="wellness-kits-title"
           eyebrow="Explore"
           title="Wellness Kits"
-          subtitle="Contact Dr. Adithya to enquire about a kit."
+          subtitle="Contact Dr Adithya Surya to enquire about a kit."
         />
         <ul className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {KITS.map((kit, i) => (
