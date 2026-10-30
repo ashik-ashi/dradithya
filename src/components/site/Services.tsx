@@ -1,5 +1,6 @@
 import { CalendarCheck, Check, ClipboardList, Clock, Stethoscope, Users } from "lucide-react";
-import { CONTACT, SERVICES, formatINR } from "@/lib/site";
+import { APPOINTMENT_ANCHOR, CONTACT, SERVICES, formatINR } from "@/lib/site";
+import { SELECT_CONSULTATION_EVENT } from "./AppointmentForm";
 import { LinkButton } from "./LinkButton";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -70,16 +71,31 @@ export function Services() {
                 )}
 
                 <div className="mt-auto pt-7">
-                  <LinkButton
-                    href={`${CONTACT.links.whatsapp}?text=${encodeURIComponent(
-                      `Hello Dr. Adithya, I'm interested in the ${s.title} (${formatINR(s.price)}).`,
-                    )}`}
-                    variant={i % 2 === 0 ? "primary" : "outline"}
-                    className="w-full"
-                    aria-label={`${s.cta} – ${s.title} on WhatsApp`}
-                  >
-                    {s.cta}
-                  </LinkButton>
+                  {s.cta === "Book Consultation" ? (
+                    <LinkButton
+                      href={APPOINTMENT_ANCHOR}
+                      variant={i % 2 === 0 ? "primary" : "outline"}
+                      className="w-full"
+                      onClick={() =>
+                        window.dispatchEvent(
+                          new CustomEvent(SELECT_CONSULTATION_EVENT, { detail: s.title }),
+                        )
+                      }
+                    >
+                      {s.cta}
+                    </LinkButton>
+                  ) : (
+                    <LinkButton
+                      href={`${CONTACT.links.whatsapp}?text=${encodeURIComponent(
+                        `Hello Dr. Adithya, I'm interested in the ${s.title} (${formatINR(s.price)}).`,
+                      )}`}
+                      variant={i % 2 === 0 ? "primary" : "outline"}
+                      className="w-full"
+                      aria-label={`${s.cta} – ${s.title} on WhatsApp`}
+                    >
+                      {s.cta}
+                    </LinkButton>
+                  )}
                 </div>
               </Reveal>
             );
