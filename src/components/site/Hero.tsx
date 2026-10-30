@@ -33,16 +33,13 @@ export function Hero() {
             className="tagline animate-fade mt-4 text-[0.7rem] min-[400px]:text-xs sm:text-sm"
             style={delay(320)}
           >
-            Your Health <span className="text-gold">|</span> Your Habits{" "}
-            <span className="text-gold">|</span> OUR FOCUS
+            Your Health, My Priority.
           </p>
 
           <div className="animate-fade mt-7 max-w-xl space-y-4" style={delay(420)}>
-            <p className="font-display text-xl text-forest">Hello, I'm Dr Adithya Surya.</p>
+            <p className="font-display text-xl text-forest">Hello, I’m Dr. Adithya Surya,</p>
             <p className="leading-relaxed text-muted-foreground">
-              I am a BNYS intern sharing health education and lifestyle guidance to help people make
-              informed, practical choices. My goal is to make reliable wellness information easier to
-              understand in Kannada and English.
+              a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
             </p>
             <p className="flex items-start gap-3 rounded-2xl border border-gold/30 bg-paper/70 px-4 py-3 text-sm leading-relaxed text-forest-deep">
               <Leaf className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
