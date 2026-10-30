@@ -26,7 +26,7 @@ export function WellnessGuide() {
           subtitle={
             <p className="tagline text-[0.7rem] sm:text-xs">
               Your Health <span className="text-gold">|</span> Your Habits{" "}
-              <span className="text-gold">|</span> Our Focus
+              <span className="text-gold">|</span> OUR FOCUS
             </p>
           }
         />
