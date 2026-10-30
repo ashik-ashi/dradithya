@@ -1,5 +1,4 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/dr-adithya-logo.jpg.asset.json";
 import { CONTACT, NAV_ITEMS } from "@/lib/site";
 import { Reveal } from "./Reveal";
 import { InstagramIcon, WhatsAppIcon } from "./icons";
@@ -12,7 +11,7 @@ export function Footer() {
           <div className="min-w-0">
             <a href="#home" className="inline-block overflow-hidden rounded-2xl bg-plate ring-1 ring-gold/40">
               <img
-                src={logo.url}
+                src="/logo.jpg"
                 alt="Dr. Adithya Health & Wellness"
                 width={1280}
                 height={714}
