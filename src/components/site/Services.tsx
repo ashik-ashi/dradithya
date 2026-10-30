@@ -1,4 +1,4 @@
-import { CalendarCheck, Check, ClipboardList, Clock, Stethoscope, Users } from "lucide-react";
+import { Clock, Stethoscope, Salad, ClipboardList } from "lucide-react";
 import { APPOINTMENT_ANCHOR, CONTACT, SERVICES, formatINR } from "@/lib/site";
 import { SELECT_CONSULTATION_EVENT } from "./AppointmentForm";
 import { LinkButton } from "./LinkButton";
@@ -7,9 +7,9 @@ import { SectionHeading } from "./SectionHeading";
 
 const ICONS = {
   consultation: Stethoscope,
+  "diet-plan": Salad,
+  "diet-consultation": ClipboardList,
   "lifestyle-program": ClipboardList,
-  "group-education": Users,
-  "follow-up": CalendarCheck,
 } as const;
 
 export function Services() {
@@ -58,49 +58,17 @@ export function Services() {
                   {s.description}
                 </p>
 
-                {s.list && (
-                  <div className="mt-5">
-                    <p className="eyebrow text-[0.65rem] text-forest">{s.listLabel}</p>
-                    <ul className="mt-3 space-y-2">
-                      {s.list.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start gap-2.5 text-sm text-foreground/85"
-                        >
-                          <Check className="mt-0.5 size-4 shrink-0 text-sage" aria-hidden="true" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 <div className="mt-auto pt-7">
-                  {s.cta === "Book Consultation" ? (
-                    <LinkButton
-                      href={APPOINTMENT_ANCHOR}
-                      variant={i % 2 === 0 ? "primary" : "outline"}
-                      className="w-full"
-                      onClick={() =>
-                        window.dispatchEvent(
-                          new CustomEvent(SELECT_CONSULTATION_EVENT, { detail: s.title }),
-                        )
-                      }
-                    >
-                      {s.cta}
-                    </LinkButton>
-                  ) : (
-                    <LinkButton
-                      href={`${CONTACT.links.whatsapp}?text=${encodeURIComponent(
-                        `Hello Dr. Adithya, I'm interested in the ${s.title} (${formatINR(s.price)}).`,
-                      )}`}
-                      variant={i % 2 === 0 ? "primary" : "outline"}
-                      className="w-full"
-                      aria-label={`${s.cta} – ${s.title} on WhatsApp`}
-                    >
-                      {s.cta}
-                    </LinkButton>
-                  )}
+                  <LinkButton
+                    href={`${CONTACT.links.whatsapp}?text=${encodeURIComponent(
+                      `Hello Dr. Adithya, I'm interested in the ${s.title} (${formatINR(s.price)}).`,
+                    )}`}
+                    variant={i % 2 === 0 ? "primary" : "outline"}
+                    className="w-full"
+                    aria-label={`Enquire about ${s.title} on WhatsApp`}
+                  >
+                    {s.cta}
+                  </LinkButton>
                 </div>
               </Reveal>
             );
