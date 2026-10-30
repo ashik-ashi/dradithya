@@ -79,14 +79,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#f6f2ea" },
-      { title: "Dr Adithya Surya | Health & Wellness Consultation" },
+      { title: "Dr. Adithya | Health & Wellness Consultation" },
       {
         name: "description",
         content:
-          "Dr Adithya Surya, BNYS Intern, provides health education and lifestyle guidance with a focus on practical wellness habits in Kannada and English.",
+          "Dr. Adithya, BNYS Intern, provides health education and lifestyle guidance with a focus on practical wellness habits in Kannada and English.",
       },
-      { name: "author", content: "Dr Adithya Surya" },
-      { property: "og:site_name", content: "Dr Adithya Surya" },
+      { name: "author", content: "Dr. Adithya Surya" },
+      { property: "og:site_name", content: "Dr. Adithya Surya" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
