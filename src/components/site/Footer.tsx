@@ -24,7 +24,7 @@ export function Footer() {
               {CONTACT.kannadaTitle}
             </p>
             <p className="mt-2 text-[0.7rem] font-semibold tracking-[0.22em] text-forest-foreground/75 uppercase">
-              Your Health | Your Habits | Our Focus
+              YOUR HEALTH | YOUR HABITS | OUR FOCUS
             </p>
           </div>
 
