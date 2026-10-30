@@ -59,11 +59,14 @@ export function appointmentSchema(today: string = todayInIndia()) {
           }, "Please enter a valid phone number (at least 10 digits)."),
       ),
     gender: z.enum(GENDERS, { errorMap: () => ({ message: "Please select your gender." }) }),
-    age: z.coerce
-      .number({ invalid_type_error: "Please enter your age." })
-      .int("Please enter your age in whole years.")
-      .min(AGE_MIN, `Age must be between ${AGE_MIN} and ${AGE_MAX}.`)
-      .max(AGE_MAX, `Age must be between ${AGE_MIN} and ${AGE_MAX}.`),
+    age: z.preprocess(
+      (v) => (typeof v === "string" && v.trim() === "" ? undefined : v),
+      z.coerce
+        .number({ required_error: "Please enter your age.", invalid_type_error: "Please enter your age." })
+        .int("Please enter your age in whole years.")
+        .min(AGE_MIN, `Age must be between ${AGE_MIN} and ${AGE_MAX}.`)
+        .max(AGE_MAX, `Age must be between ${AGE_MIN} and ${AGE_MAX}.`),
+    ),
     email: z
       .string()
       .transform((v) => clean(v))
