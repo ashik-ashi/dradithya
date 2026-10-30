@@ -36,7 +36,7 @@ export function About() {
               id="about-title"
               className="mt-3 text-[2rem] leading-[1.1] font-semibold sm:text-[2.6rem]"
             >
-              About Dr. Adithya
+              About Dr Adithya Surya Surya
             </h2>
             <div className="mt-5 flex items-center gap-3">
               <TwinLeaf className="h-4 w-7 text-sage" />
@@ -46,7 +46,7 @@ export function About() {
               BNYS Intern
             </span>
             <div className="mt-6 space-y-4 text-[1.02rem] leading-relaxed text-muted-foreground">
-              <p className="font-display text-2xl text-forest">Hello, I'm Dr Adithya.</p>
+              <p className="font-display text-2xl text-forest">Hello, I'm Dr Adithya Surya.</p>
               <p>
                 I am a BNYS intern sharing health education and lifestyle guidance to help people make
                 informed, practical choices. My goal is to make reliable wellness information easier to
