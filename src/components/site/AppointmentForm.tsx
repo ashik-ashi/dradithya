@@ -369,7 +369,7 @@ export function AppointmentForm() {
                     </option>
                     {CONSULTATION_TYPES.map((c) => (
                       <option key={c} value={c} className="text-foreground">
-                        {c}
+                        {c} — {formatINR(SERVICES.find((s) => s.title === c)?.price ?? 0)}
                       </option>
                     ))}
                   </select>
