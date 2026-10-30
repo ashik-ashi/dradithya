@@ -69,18 +69,27 @@ export const requestAppointment = createServerFn({ method: "POST" })
       timeZone: "Asia/Kolkata",
     }).format(new Date());
 
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      console.error("Appointment email service is missing WEB3FORMS_ACCESS_KEY.");
+      return {
+        ok: false,
+        reason: "send_failed",
+        message: "Appointment email is not configured yet. Please contact us on WhatsApp.",
+      };
+    }
+
     const body = {
-      _subject: doctorEmailSubject(a.name),
-      _template: "table",
-      _captcha: "false",
-      _replyto: a.email,
-      ...(formPageUrl ? { _url: formPageUrl } : {}),
-      "New Consultation Appointment Request": "Patient Details",
-      Name: a.name,
-      Phone: a.phone,
+      access_key: accessKey,
+      subject: doctorEmailSubject(a.name),
+      from_name: "Dr. Adithya Appointment Website",
+      email: a.email,
+      replyto: a.email,
+      "Patient Name": a.name,
+      "Phone Number": a.phone,
       Gender: a.gender,
       Age: String(a.age),
-      email: a.email,
+      "Patient Email": a.email,
       "Preferred Appointment Date": formatPreferredDate(a.date),
       "Consultation Type": a.consultation,
       "Health Concern / Problem": a.problem,
@@ -88,40 +97,29 @@ export const requestAppointment = createServerFn({ method: "POST" })
     };
 
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT.email}`, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          ...(requestOrigin ? { Origin: requestOrigin } : {}),
-          ...(requestReferer ? { Referer: requestReferer } : {}),
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(body),
       });
-      const responseText = await res.text();
-      let json: { success?: string | boolean; message?: string } | null = null;
-      try {
-        json = JSON.parse(responseText) as { success?: string | boolean; message?: string };
-      } catch {
-        // Some upstream errors (including access-denied responses) are HTML/plain text.
-      }
-      const ok = res.ok && (json?.success === true || json?.success === "true");
-      if (!ok) {
-        const upstreamMessage =
-          json?.message ||
-          (responseText.trim() && !responseText.trim().startsWith("<")
-            ? responseText.trim().slice(0, 300)
-            : undefined);
-        console.error("Appointment relay rejected", res.status, upstreamMessage || "No readable upstream message");
+      const json = (await res.json().catch(() => null)) as
+        | { success?: boolean; message?: string; error?: string }
+        | null;
+      if (!res.ok || json?.success !== true) {
+        console.error("Appointment email service rejected", res.status, json?.message || json?.error);
         return {
           ok: false,
           reason: "send_failed",
-          message: upstreamMessage || `Email service returned HTTP ${res.status}. Check the recipient activation email and Vercel function logs.`,
+          message: json?.message || json?.error || `Email service returned HTTP ${res.status}.`,
         };
       }
       return { ok: true };
     } catch (err) {
-      console.error("Appointment relay error", err instanceof Error ? err.message : "unknown");
-      return { ok: false, reason: "send_failed", message: "Could not connect to the email service. Please check the Vercel function logs." };
+      console.error("Appointment email relay error", err instanceof Error ? err.message : "unknown");
+      return {
+        ok: false,
+        reason: "send_failed",
+        message: "Could not connect to the email service. Please try again later.",
+      };
     }
   });
