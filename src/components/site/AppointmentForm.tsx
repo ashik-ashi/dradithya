@@ -6,6 +6,8 @@ import {
   CONSULTATION_TYPES,
   GENDERS,
   appointmentSchema,
+  doctorEmailSubject,
+  formatPreferredDate,
   todayInIndia,
   whatsappDetailsUrl,
   type Appointment,
@@ -17,6 +19,9 @@ import { LinkButton } from "./LinkButton";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { LeafSprig, WhatsAppIcon } from "./icons";
+
+// Paste the Web3Forms access key for adithaysurya472@gmail.com here when ready.
+const WEB3FORMS_ACCESS_KEY = "PASTE_WEB3FORMS_ACCESS_KEY_HERE";
 
 type Values = Record<AppointmentField, string>;
 const EMPTY: Values = {
@@ -91,8 +96,8 @@ export function AppointmentForm() {
     setRateLimited(false);
     setSendError(null);
     try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-      if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+      const accessKey = WEB3FORMS_ACCESS_KEY;
+      if (!accessKey || accessKey === "PASTE_WEB3FORMS_ACCESS_KEY_HERE") {
         throw new Error("Appointment email is not configured yet. Please contact us on WhatsApp.");
       }
 
