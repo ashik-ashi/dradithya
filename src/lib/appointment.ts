@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, SERVICES, formatINR } from "@/lib/site";
 
 export const GENDERS = ["Male", "Female", "Other", "Prefer not to say"] as const;
 
@@ -132,7 +132,7 @@ export function whatsappDetailsUrl(a: Appointment): string {
     `Age: ${a.age}`,
     `Email: ${a.email}`,
     `Preferred Date: ${formatPreferredDate(a.date)}`,
-    `Consultation: ${a.consultation}`,
+    `Consultation: ${a.consultation} (${formatINR(SERVICES.find((s) => s.title === a.consultation)?.price ?? 0)})`,
     "",
     "Health Concern:",
     a.problem,
