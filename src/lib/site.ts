@@ -1,6 +1,6 @@
 export const CONTACT = {
   name: "Dr. Adithya Surya",
-  qualification: "BNYS Intern",
+  qualification: "Naturopathy and Yoga Doctor",
   kannadaTitle: "ನಿಮ್ಮ ಆರೋಗ್ಯ ನನ್ನ ಆದ್ಯತೆ",
   tagline: "YOUR HEALTH | YOUR HABITS | OUR FOCUS",
   location: "Hassan, Karnataka, India",
