@@ -11,7 +11,7 @@ const KITS = [
   },
   {
     name: "Seed Cycling Kit for Irregular Periods",
-    message: "Hello Dr. Adithya, I am interested in the Seed Cycling Kit for Irregular Periods. I would like to know more about it.",
+    message: "Hello Dr. Adithya, I am interested in the Seed Cycling Kit for Irregular Periods and PCOS. I would like to know more about it.",
   },
   {
     name: "Thyroid Kit for Primary Hypothyroidism and Hashimoto Thyroiditis",
