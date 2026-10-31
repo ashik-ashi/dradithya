@@ -1,4 +1,4 @@
-import { Clock, Stethoscope, Salad, ClipboardList } from "lucide-react";
+import { Clock, Stethoscope, Salad, ClipboardList, Flower2 } from "lucide-react";
 import { CONTACT, SERVICES, formatINR } from "@/lib/site";
 import { LinkButton } from "./LinkButton";
 import { SELECT_CONSULTATION_EVENT } from "./AppointmentForm";
@@ -10,6 +10,7 @@ const ICONS = {
   "diet-plan": Salad,
   "diet-consultation": ClipboardList,
   "lifestyle-program": ClipboardList,
+  "online-yoga-classes": Flower2,
 } as const;
 
 export function Services() {
