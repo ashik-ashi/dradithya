@@ -72,6 +72,13 @@ export const SERVICES: Service[] = [
     description: "Lifestyle guidance, habit tracker & scheduled follow-ups",
     cta: "Join Program",
   },
+  {
+    id: "online-yoga-classes",
+    title: "Online Yoga Classes",
+    price: 1000,
+    description: "Guided yoga classes delivered online.",
+    cta: "Enquire on WhatsApp",
+  },
 ];
 
 export function formatINR(amount: number) {
