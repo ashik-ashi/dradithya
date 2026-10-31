@@ -17,7 +17,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8">
         <div className="min-w-0">
           <p className="eyebrow animate-fade" style={delay(80)}>
-            BNYS Intern <span className="text-sage">|</span> Health &amp; Wellness
+            Naturopathy and Yoga Doctor <span className="text-sage">|</span> Health &amp; Wellness
           </p>
 
           <h1
@@ -38,7 +38,7 @@ export function Hero() {
 
           <div className="animate-fade mt-7 max-w-xl space-y-4" style={delay(420)}>
             <p className="leading-relaxed text-muted-foreground">
-              Hello, I’m Dr. Adithya Surya, a BNYS Intern passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
+              Hello, I’m Dr. Adithya Surya, a Naturopathy and Yoga Doctor passionate about naturopathy, yoga, nutrition and holistic healthcare. My mission is to simplify health knowledge, help people understand the root causes of health concerns, and encourage healthier lifestyles through evidence-informed guidance and natural approaches to wellness.
             </p>
           </div>
 
@@ -84,7 +84,7 @@ export function Hero() {
           <LeafSprig className="pointer-events-none absolute -right-4 -bottom-10 w-28 text-sage sm:-right-8 sm:w-36" />
           <div className="absolute -bottom-6 left-4 max-w-[calc(100%-2rem)] rounded-2xl border border-border bg-paper px-4 py-3 shadow-soft sm:left-6">
             <p className="font-display text-base leading-tight text-forest-deep">Dr Adithya Surya</p>
-            <p className="eyebrow mt-1 text-[0.62rem]">BNYS Intern</p>
+            <p className="eyebrow mt-1 text-[0.62rem]">Naturopathy and Yoga Doctor</p>
           </div>
         </div>
       </div>
