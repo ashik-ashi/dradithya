@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Dr. Adithya, BNYS Intern, provides health education and lifestyle guidance with a focus on practical wellness habits in Kannada and English.",
+          "Dr. Adithya, Naturopathy and Yoga Doctor, provides health education and lifestyle guidance with a focus on practical wellness habits in Kannada and English.",
       },
       { name: "author", content: "Dr. Adithya Surya" },
       { property: "og:site_name", content: "Dr. Adithya Surya" },
